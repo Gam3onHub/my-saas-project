@@ -1,0 +1,2150 @@
+/* /////////////////////////////////////////////////////////////// CLEANED CSS //////////////////////////////////////////////////////////// */
+
+/* ====================== RESET & BASE ====================== */
+
+
+/* Hide hamburger on desktop */
+#hamburger-menu {
+  display: none;
+}
+
+
+.page-container {
+  padding-left: 60px;
+  padding-right: 60px;
+  box-sizing: border-box; /* important */
+}
+
+/* RESET MARGIN, PADDING, AND BOX-SIZING FOR ALL ELEMENTS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* INCLUDE PADDING AND BORDER IN WIDTH/HEIGHT */
+}
+
+/* SET BASE LAYOUT FOR BODY */
+body {
+  margin: 0; /* REMOVE DEFAULT BROWSER MARGINS */
+  min-height: 100vh; /* ENSURE FULL VIEWPORT HEIGHT */
+  position: relative; /* ESTABLISH POSITIONING CONTEXT */
+  z-index: 0; /* BASE LAYER FOR CONTENT */
+  font-family: Helvetica, Verdana, Arial, sans-serif; /* DEFINE DEFAULT FONT STACK */
+  display: flex; /* USE FLEXBOX FOR LAYOUT */
+  flex-direction: column; /* STACK CHILDREN VERTICALLY */
+  min-height: 100vh; /* ENSURE FULL HEIGHT */
+  padding: 0; /* lets >>>> .page-container <<<< handle left/ right page padding */
+}
+
+/* CREATE BACKGROUND LAYER WITH HEADER-LIKE MARGINS */
+body::before {
+  content: ''; /* REQUIRED FOR PSEUDO-ELEMENT */
+  position: absolute; /* POSITION ABSOLUTELY OVER BODY */
+  top: 40px; /* START BELOW HEADER (MATCHING 70PX HEIGHT) */
+  left: 60px; /* MATCH BODY PADDING */
+  right: 60px; /* MATCH BODY PADDING */
+  bottom: 0; /* EXTEND TO BOTTOM */
+background: linear-gradient(to bottom, #E0E3FD, rgba(224, 227, 253, 0.3));
+  background-size: cover; /* SCALE TO COVER AREA */
+  z-index: -1; /* PLACE BEHIND ALL CONTENT */
+
+}
+
+/* SET FULL HEIGHT FOR HTML */
+html {
+  height: 100%; /* ENSURE FULL HEIGHT */
+}
+
+
+
+[data-aos] {
+  transition-timing-function: ease-out;
+  transition-duration: 0.8s;
+}
+
+
+
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 70px;
+  background: white;
+  border-bottom: 0.5px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left, .header-center, .header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  gap: 40px;
+}
+
+/* ---- responsive nav: Home + Dashboard tighten as viewport narrows ---- */
+.left-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;      /* space between logo and the nav */
+  min-width: 0;   /* IMPORTANT: allows children to shrink inside */
+}
+
+.nav-bar {
+  display: flex;
+  flex: 1 1 auto; /* let the nav take available space and shrink when needed */
+  min-width: 0;   /* IMPORTANT */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(12px, 3vw, 60px); /* fluid gap: shrinks smoothly as screen gets smaller 
+  
+  -- The 12px → minimum gap at the smallest screens.
+
+  -- The 3vw → gap grows proportionally with viewport width.
+
+  -- The 60px → maximum gap at the largest screens. */
+  
+  min-width: 0;                 /* critical for flex shrinking to work */
+  list-style: none; /* remove bullets */
+  padding: 0;       /* remove default UL padding */
+  margin: 0;        /* remove default UL margin */
+}
+
+.nav-links li {
+  min-width: 0;
+}
+
+.nav-links a {
+  white-space: nowrap; /* keep each link on one line */
+  flex-shrink: 1;      /* allow the link container to get closer to its neighbor */
+  min-width: 0;        /* avoids overflow in flex contexts */
+}
+
+
+
+
+
+
+.nav-links li a {
+  text-decoration: none;
+  color: black;
+  padding: 8px 12px;
+  font-size: 24px;
+  transition: all 0.2s ease;
+}
+
+.nav-links li a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #5564f2;
+  color: #5564f2;
+}
+
+.nav-links li a:hover {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.header-center {
+  flex: 1 1 300px;  /* allow search to grow/shrink */
+  justify-content: center;
+}
+
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px 8px 35px; /* leave space for icon */
+  border: 1px solid #A39DE0;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  background: #F7F8FF;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #5564F5;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.header-right {
+  gap: 20px;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #A39DE0;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#hamburger-menu {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* hide links */
+  }
+
+  #hamburger-menu {
+    display: block;
+  }
+
+  .header-center {
+    flex: 1 1 70%;
+  }
+}
+
+
+
+
+
+
+/* ====================== MOBILE MENU DROPDOWN ====================== */
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: white;
+  position: absolute;
+  top: 70px; /* same height as header */
+  right: 20px;
+  width: 200px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 999;
+}
+
+.mobile-menu a {
+  padding: 14px 20px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  text-align: center;
+}
+
+.mobile-menu a:hover {
+  background: #f0f0f0;
+}
+
+.mobile-menu.show {
+  display: flex;
+}
+
+
+
+
+
+
+
+
+/* ======================  SIDE MENU CONTAINER  ====================== */
+
+/* CONTAINER STYLING */
+.container {
+  flex: 1; /* ALLOW GROWTH TO FILL SPACE */
+  display: flex; /* USE FLEXBOX */
+  flex-wrap: nowrap; /* PREVENT WRAPPING */
+  gap: 20px; /* SPACE BETWEEN ITEMS */
+  margin-top: 40px; /* OFFSET TO START BELOW HEADER */
+  padding-left: 0 !important;   /* reset inner padding */
+  padding-right: 0 !important;  /* reset inner padding */
+  min-height: 0; /* PREVENT FLEX SHRINKING ISSUES */
+  height: auto; /* ALLOW CONTENT TO DETERMINE HEIGHT */
+}
+
+/* ====================== SIDEBAR ====================== */
+
+/* SIDEBAR STYLING */
+.sidebar {
+  width: 200px; /* FIXED WIDTH */
+  background: white; /* WHITE BACKGROUND */
+  display: flex; /* USE FLEXBOX */
+  flex-direction: column; /* STACK VERTICALLY */
+  flex: 0 0 200px; /* fixed width sidebar */
+  padding-top: 40px; /* TOP PADDING */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* RIGHT SHADOW */
+  border: 1px solid #A39DE0; /* BORDER */
+  border-top-right-radius: 16px; /* ROUNDED TOP-RIGHT */
+  border-bottom-right-radius: 16px; /* ROUNDED BOTTOM-RIGHT */
+  transition: left 0.3s ease; /* SMOOTH SLIDE */
+  z-index: 998; /* ABOVE BACKGROUND */
+  margin-bottom: 40px; /* SPACE ABOVE FOOTER */
+}
+
+/* HIDE RADIO INPUTS */
+.sidebar input[type="radio"] {
+  display: none; /* HIDE RADIO BUTTONS */
+}
+
+/* MENU ITEM STYLING */
+.menu-item {
+  padding: 15px 20px; /* PADDING */
+  display: flex; /* USE FLEXBOX */
+  align-items: center; /* CENTER ITEMS */
+  border-left: 4px solid transparent; /* DEFAULT BORDER */
+  color: black; /* TEXT COLOR */
+  cursor: pointer; /* INDICATE CLICKABLE */
+  transition: background 0.2s, border-color 0.2s, color 0.2s; /* SMOOTH TRANSITIONS */
+}
+
+/* MENU ITEM ICON STYLING */
+.menu-item .icon {
+  margin-right: 10px; /* SPACE BEFORE TEXT */
+  width: 20px; /* FIXED WIDTH */
+  height: 20px; /* FIXED HEIGHT */
+}
+
+/* HOVER EFFECT FOR MENU ITEMS */
+.menu-item:hover {
+  background: #E0E3FD; /* LIGHT BLUE ON HOVER */
+}
+
+/* ACTIVE MENU ITEM STYLING */
+#dashboard:checked ~ #dashboard-label,
+#settings:checked ~ #settings-label {
+  background: #5564F5; /* BLUE BACKGROUND */
+  border-left: 4px solid #007bff; /* BLUE BORDER */
+  font-weight: bold; /* BOLD TEXT */
+  color: white; /* WHITE TEXT */
+}
+
+/* ACTIVE MENU ITEM ICON STYLING */
+#dashboard:checked ~ #dashboard-label .icon,
+#settings:checked ~ #settings-label .icon {
+  filter: brightness(0) invert(1); /* INVERT ICON COLOR */
+}
+
+/* PREMIUM BUTTON CONTAINER STYLING */
+.premium-button {
+  margin-top: auto; /* PUSH TO BOTTOM */
+  padding: 20px; /* PADDING */
+}
+
+/* PREMIUM BUTTON STYLING */
+.premium-button button {
+  background: linear-gradient(to right, #F38734, #FCED16); /* GRADIENT */
+  width: 100%; /* FULL WIDTH */
+  padding: 11px; /* PADDING */
+  font-size: 12px; /* FONT SIZE */
+  font-weight: bold; /* BOLD TEXT */
+  border: 2px solid #5564F5; /* BORDER */
+  border-radius: 30px; /* ROUNDED CORNERS */s
+  color: black; /* TEXT COLOR */
+  cursor: pointer; /* INDICATE CLICKABLE */
+  transition: transform 0.2s ease; /* SMOOTH SCALE */
+  -webkit-background-clip: padding-box; /* for Safari */
+  -webkit-text-fill-color: inherit; /* for Safari text */
+}
+
+/* HOVER EFFECT FOR PREMIUM BUTTON */
+.premium-button button:hover {
+  transform: scale(1.05); /* SLIGHT ENLARGEMENT */
+}
+
+
+/* Optional: hover effect */
+.premium-button button:hover {
+  opacity: 0.7;
+}
+
+
+
+
+/* ====================== MAIN CONTENT ====================== */
+
+
+
+/* MAIN CONTENT STYLING */
+.main-content {
+  flex: 1; /* ALLOW GROWTH */
+  display: flex; /* USE FLEXBOX */
+  flex-direction: column; /* STACK VERTICALLY */
+  gap: 30px; /* SPACE BETWEEN SECTIONS */
+  z-index: 1; /* ABOVE BACKGROUND */
+  margin-left: 0; /* remove extra left margin */
+  margin-bottom: 40px; /* adjust if sidebar gap is larger/smaller */
+  position: relative; /* POSITIONING CONTEXT */
+  min-height: 0; /* PREVENT SHRINKING ISSUES */
+  height: auto; /* ALLOW CONTENT TO DETERMINE HEIGHT */
+  padding: 0 !important;
+  box-sizing: border-box;
+  
+}
+
+
+
+
+
+
+
+
+/* ENSURE > MID-ROW AND BOTTOM-ROW < FILL WIDTH */
+.dashboard-row.mid-row,
+.dashboard-row.bottom-row {
+  flex: 0 0 auto;
+  min-height: 180px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+
+
+
+/* RESPONSIVE ADJUSTMENTS FOR BOARDS (FOR SMALL SCREENS) */
+@media (max-width: 1200px) {
+  .board.wide {
+    min-width: 250px; /* REDUCE MIN WIDTH */
+    padding: 30px; /* REDUCE PADDING */
+  }
+  .dashboard-row.mid-row > .board.wide:first-child {
+    flex: 2 1 500px;
+    max-width: calc(60% - 10px);
+  }
+  .dashboard-row.mid-row > .board.wide:nth-child(2) {
+    flex: 1 1 300px;
+    max-width: calc(40% - 10px);
+  }
+  .dashboard-row.bottom-row > .board.wide:first-child {
+    flex: 2 1 500px;
+    max-width: calc(60% - 10px);
+  }
+  .dashboard-row.bottom-row > .board.wide:nth-child(2) {
+    flex: 1 1 300px;
+    max-width: calc(40% - 10px);
+  }
+}
+
+@media (max-width: 900px) {
+  .board.wide {
+    min-width: 0; /* ALLOW FULL SHRINKING */
+    padding: 20px; /* FURTHER REDUCE PADDING */
+  }
+
+  
+  .dashboard-row.bottom-row > .board.wide:first-child,
+  .dashboard-row.bottom-row > .board.wide:nth-child(2) {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+
+  .dashboard-row.mid-row,
+  .dashboard-row.bottom-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .board-title {
+    font-size: 16px; /* REDUCE FONT SIZE */
+  }
+  .board-number {
+    font-size: 18px; /* REDUCE FONT SIZE */
+  }
+  .board-subtext {
+    font-size: 12px; /* REDUCE FONT SIZE */
+  }
+}
+
+@media (max-width: 600px) {
+  .board.wide {
+    padding: 15px; /* MINIMAL PADDING */
+  }
+  .dashboard-row.mid-row > .board.wide:first-child,
+  .dashboard-row.mid-row > .board.wide:nth-child(2),
+  .dashboard-row.bottom-row > .board.wide:first-child,
+  .dashboard-row.bottom-row > .board.wide:nth-child(2) {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .board-title {
+    font-size: 14px; /* FURTHER REDUCE FONT SIZE */
+  }
+  .board-number {
+    font-size: 16px; /* FURTHER REDUCE FONT SIZE */
+  }
+  .board-subtext {
+    font-size: 10px; /* FURTHER REDUCE FONT SIZE */
+  }
+}
+
+
+
+/* DASHBOARD GRID & ROWS */
+.dashboard-grid {
+  flex: 1; /* ALLOW GROWTH */
+  display: flex; /* USE FLEXBOX */
+  flex-direction: column; /* STACK ROWS */
+  gap: 30px; /* SPACE BETWEEN ROWS */
+  overflow: visible; /* ALLOW OVERFLOW */
+  min-height: 0; /* PREVENT SHRINKING */
+  height: auto; /* ADJUST TO CONTENT */
+  margin-bottom: 40px; /* SPACE ABOVE FOOTER */
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+/* DASHBOARD GRID & ROWS */
+.dashboard-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+
+
+.dashboard-row.top-row {
+  flex: 0 0 auto;
+  align-items: flex-start;
+  z-index: 2; /* ABOVE BACKGROUND */
+  height: auto;
+  min-height: 0 !important;
+}
+
+
+
+
+.dashboard-row.mid-row {
+  flex: 0 0 auto; /* FIXED SIZE */
+  min-height: 180px; /* MIN HEIGHT */
+}
+
+.dashboard-row.bottom-row {
+  flex: 1; /* ALLOW GROWTH */
+  display: flex; /* USE FLEXBOX */
+  flex-wrap: wrap; /* ALLOW WRAPPING */
+  gap: 20px; /* SPACE BETWEEN ITEMS */
+  min-height: 0; /* NO MIN HEIGHT */
+  position: relative; /* POSITIONING CONTEXT */
+  z-index: 1000; /* ABOVE OTHER CONTENT */
+}
+
+////////////////////
+/* DASHBOARD BOARDS */
+//////////////////////
+
+
+/* DASHBOARD BOARDS STYLING */
+.board {
+  background-color: #ffffff;  /* or a light grey like #f7f7f9 */
+  border: 1px solid #e0e0e0;  /* subtle divider line */
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  padding: 12px 16px; /* even padding all around */
+  color: #333;
+  flex: 1 1 220px; /* Allows shrinking */
+  min-width: 220px; /* Avoid collapsing too small */
+  min-height: 120px !important;
+  overflow: hidden; /* PREVENT CONTENT SPILLING */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-width: 220px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  gap: 8px; /* vertical space between all children */
+
+}
+
+
+
+
+
+
+
+
+
+
+.board.wide {
+  flex: 2 1 480px; /* Wide boards take more space */
+}
+
+
+/* BOARD CONTENT STYLING */
+.board-header,
+.board-number,
+.board-subtext {
+  min-height: 20px;
+  position: relative;
+  color: black; /* RESET TO BLACK, REMOVE DEBUG RED */
+  word-wrap: break-word; /* ALLOW TEXT TO WRAP */
+  overflow-wrap: break-word; /* ALTERNATIVE FOR BETTER SUPPORT */
+  max-width: 100%; /* ENSURE CONTENT STAYS WITHIN BOUNDS */
+}
+
+
+
+
+/* BOARD HEADER */
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.board-title {
+  font-size: 1.4rem;
+  margin: 0;
+  font-weight: normal;
+  word-wrap: break-word;
+  margin-bottom: 10px; /* space between title and number */ 
+}
+
+.board-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  display: block;
+}
+
+/* BOARD NUMBER */
+.board-number {
+  font-size: 2em;
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
+/* BOARD SUBTEXT */
+.board-subtext {
+  font-size: 1em;
+  word-wrap: break-word;
+  margin-bottom: 0; /* last element, no extra space needed */
+}
+
+
+.board-subtext.blue { color: #5564F5; }
+.board-subtext.red { color: #E63946; }
+.board-subtext.black { color: #000; }
+
+
+
+/* WIDE BOARDS STYLING (CONSOLIDATED) */
+.board.wide {
+  background: #FFFFFF;
+  flex: 2 1 480px;
+  max-width: calc(50% - 10px);
+  min-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  overflow: hidden; /* PREVENT CONTENT SPILLING */
+}
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////
+////////*               CUSTOM WIDTH FOR BOARDS           *///////////////
+//////////////////////////////////////////////////////////////////////////
+
+/* CUSTOM WIDTH FOR TASK COMPLETION RATE BOARD (FIRST WIDE BOARD IN MID-ROW) */
+.dashboard-row.mid-row > .board.wide:first-child {
+  flex: 6 1 600px; /* INCREASED FLEX GROWTH TO 6, BASE WIDTH TO 600px */
+  max-width: calc(60% - 10px); /* ALLOW MORE WIDTH UP TO 65% */
+}
+
+/* CUSTOM WIDTH FOR TASK DISTRIBUTION BY CATEGORY BOARD (SECOND WIDE BOARD IN MID-ROW) */
+.dashboard-row.mid-row > .board.wide:nth-child(2) {
+  flex: 3 1 350px; /* REDUCED FLEX GROWTH TO 3, BASE WIDTH TO 350px */
+  max-width: calc(50% - 10px); /* LIMIT TO 35% WIDTH */
+  min-width: 250px; /* MINIMUM WIDTH */
+}
+
+
+/* CUSTOM WIDTH FOR TASK OVERVIEW BOARD (FIRST WIDE BOARD IN BOTTOM-ROW) */
+.dashboard-row.bottom-row > .board.wide:first-child {
+  flex: 3 1 600px; /* INCREASED FLEX GROWTH TO 3, BASE WIDTH TO 600px */
+  max-width: calc(60% - 10px); /* ALLOW MORE WIDTH UP TO 65% */
+}
+
+/* CUSTOM WIDTH FOR RECENT ACTIVITY BOARD (SECOND WIDE BOARD IN BOTTOM-ROW) */
+.dashboard-row.bottom-row > .board.wide:nth-child(2) {
+  flex: 1 1 350px; /* REDUCED FLEX GROWTH TO 1, BASE WIDTH TO 350px */
+  max-width: calc(40% - 10px); /* LIMIT TO 35% WIDTH */
+  min-width: 250px; /* MINIMUM WIDTH */
+}
+
+
+
+
+
+/* RESPONSIVE ADJUSTMENTS FOR BOARDS (FOR SMALL SCREENS) */
+@media (max-width: 1200px) {
+  .dashboard-row.mid-row > .board.wide:first-child {
+    flex: 2 1 500px; /* REDUCE GROWTH TO 2, ADJUST BASE WIDTH */
+    max-width: calc(60% - 10px); /* REDUCE MAX WIDTH TO 60% */
+  }
+  .dashboard-row.mid-row > .board.wide:nth-child(2) {
+    flex: 1 1 300px; /* KEEP GROWTH AT 1, ADJUST BASE WIDTH */
+    max-width: calc(40% - 10px); /* REDUCE MAX WIDTH TO 40% */
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-row.mid-row > .board.wide:first-child {
+    flex: 1 1 100%; /* ALLOW FULL WIDTH, REDUCE GROWTH */
+    max-width: 100%; /* FULL WIDTH */
+    min-width: 0; /* ALLOW SHRINKING */
+  }
+  .dashboard-row.mid-row > .board.wide:nth-child(2) {
+    flex: 1 1 100%; /* ALLOW FULL WIDTH, REDUCE GROWTH */
+    max-width: 100%; /* FULL WIDTH */
+    min-width: 0; /* ALLOW SHRINKING */
+  }
+  .dashboard-row.mid-row {
+    flex-direction: column; /* STACK BOARDS VERTICALLY */
+    align-items: stretch; /* STRETCH TO FULL WIDTH */
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-row.mid-row > .board.wide:first-child,
+  .dashboard-row.mid-row > .board.wide:nth-child(2) {
+    flex: 1 1 100%; /* FULL WIDTH FOR BOTH */
+    max-width: 100%; /* FULL WIDTH */
+    min-width: 0; /* ALLOW FULL SHRINKING */
+    padding: 20px; /* REDUCE PADDING FOR SMALL SCREENS */
+  }
+}
+
+
+
+
+@media (max-width: 600px) {
+  .board-title { font-size: 12px !important; }
+  .board-number { font-size: 14px !important; }
+  .board-subtext { font-size: 10px !important; }
+  .board-icon { width: 20px !important; height: 20px !important; }
+}
+
+
+
+
+
+
+/* CHART CONTAINER FOR TASK CHARTS - FLEXIBLE HEIGHT */
+.chart-container {
+  position: relative; /* POSITIONING CONTEXT */
+  width: 100%; /* FULL WIDTH */
+  height: 0; /* INITIAL HEIGHT */
+  padding-bottom: 50%; /* ASPECT RATIO */
+  margin-top: 10px; /* SPACE ABOVE */
+}
+
+
+.chart-container canvas {
+  position: absolute; /* POSITION INSIDE CONTAINER */
+  top: 0; /* ALIGN TOP */
+  left: 0; /* ALIGN LEFT */
+  width: 100% !important; /* FORCE WIDTH */
+  height: 100% !important; /* FORCE HEIGHT */
+}
+
+
+//////////////////////////////
+/* BOTTOM ROW BOARDS STYLING */
+//////////////////////////////
+
+
+/* THIS WILL ICREASE THE <H3> FOR THE BOTTOM ROW BOARDS*/
+.bottom-row .board.wide h3 {
+  font-size: 3em; /* Increase font size for Task Overview and Recent Activity */
+  font-weight: bold; /* Maintain bold style */
+}
+
+
+/* TASK OVERVIEW BOARD */
+.task-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between columns */
+  margin-top: 20px;
+  min-height: 300px;
+  position: relative;
+  overflow: visible;
+  padding: 0; /* No extra padding here—board handles it */
+}
+
+
+
+/* TASK COLUMN STYLING */
+.task-column {
+  flex: 1 1 220px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Space between white rectangles and column titles */
+}
+
+
+
+.more-wrapper::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #000000;
+  margin-top: 2px;
+}
+
+
+
+/* COLUMN TITLE STYLING */
+.column-title {
+  padding: 6px 14px;
+  border-radius: 20px; /* Pill shape */
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: black;
+  margin-bottom: 20px;
+  display: inline-flex; /* Restrict width to content + padding */
+  align-items: center; /* Vertically center text */
+  text-align: right; /* Align text to the right */
+  max-width: 150px; /* Limit maximum width of the pill */
+}
+
+
+.column-title.todo { background: #E98686; } /* Red */
+.column-title.progress { background: #FECE54; } /* Yellow */
+.column-title.completed { background: #9DF7A7; } /* Green */
+
+
+
+
+/* FOLDER WRAPPER STYLING */
+.folder-wrapper { 
+  position: relative; /* POSITIONING CONTEXT */
+  margin-bottom: 16px; /* SPACE BELOW */
+}
+
+
+
+/* FOLDER STYLING (for COLUMN 1 AND 2) */
+.folder {
+  background: white;
+  border: 1px solid #E98686; /* Default subtle border */
+  border-radius: 8px;
+  padding: 30px 12px 12px; /* Extra top padding for pill overlap */
+  position: relative; /* For absolute positioning of header and ::before */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+  min-height: 110px; /* Increase height here */
+}
+
+
+
+/* FOLDER HEADER STYLING (pill) */
+.folder-header {
+  position: absolute;
+  top: -25px; /* Move higher to sit fully on top */
+  right: 10px; /* Align to the right */
+  background: #E98686; /* Default red */
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem; /* Slightly smaller for pill */
+  padding: 4px 12px;
+  border-radius: 20px; /* Strong pill shape */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 1; /* Ensure it stays above the folder */
+  white-space: nowrap;
+}
+
+/* FOLDER CONTENT STYLING */
+.folder-content {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+}
+
+
+/* ICONS INSIDE RED & YELLOW FOLDERS */
+.folder-content .icon {
+  width: 30px; /* SVG icon size */
+  height: 30px;
+  object-fit: contain;
+}
+
+.folder-content .text {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* COLOR VARIANTS FOR HEADERS AND LEFT STROKES */
+.folder.high .folder-header, .folder.design .folder-header { background: #E98686; } /* Red pill */
+.folder.development .folder-header, .folder.api .folder-header { background: #FECE54; } /* Yellow pill */
+
+/* LEFT STROKE COLORS */
+.folder.high::before, .folder.design::before { background: #E98686; } /* Red */
+.folder.development::before, .folder.api::before { background: #FECE54; } /* Yellow */
+
+
+/* COLUMN 1 & 2 THICKER LEFT STROKE */
+.folder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px; /* Thicker left stroke */
+  height: 100%;
+  border-radius: 4px 0 0 4px;
+
+}
+
+
+
+/* COLUMN 3 STYLING */
+.completed-task {
+  background: white;
+  border-radius: 8px;
+  padding: 18px; /*adds space inside the rectangle*/
+  position: relative;
+  overflow: hidden;
+  font-size: 0.9rem;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 12px; /* Space between completed items */
+}
+
+
+/* COLUMN 3 THICKER LEFT STROKE */
+.completed-task::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px; /* Thicker left stroke */
+  height: 100%;
+  background: #9DF7A7; /* Green */
+  border-radius: 4px 0 0 4px;
+}
+
+
+/* ARROW SVG "MORE INFO..." ICON */
+.more-icon {
+  width: 60px; /* SVG size */
+  height: 60px; /* SVG size */
+  object-fit: contain;
+  margin: 10px auto 0; /* Center horizontally */
+  display: block;
+  position: relative; /* Add positioning context for ::after */
+}
+
+
+/* ADD HORIZONTAL LINE BELOW COLUMNS 1 AND 2 */
+.more-icon::after {
+  content: '';
+  display: block;
+  width: 100%; /* Full width of the .more-icon */
+  height: 1px; /* Thickness of the line */
+  background: #000000; /* Black color */
+  margin-top: 1px; /* Space between icon and line */
+  position: absolute; /* Position absolutely within .more-icon */
+  left: 0; /* Align to the left */
+  bottom: -2px; /* Place below the icon, adjusting for margin */
+}
+
+
+
+
+
+/* SPECIFIC BORDER COLORS FOR EACH WHITE RECTANGLE */
+.folder.high, .folder.design {
+  border: 1px solid #E98686 !important; /* Red for Column 1 */
+}
+.folder.development, .folder.api {
+  border: 1px solid #FECE54 !important; /* Yellow for Column 2 */
+}
+.completed-task {
+  border: 1px solid #9DF7A7 !important; /* Green for Column 3 */
+}
+
+/* Ensure board padding is respected */
+.board.wide {
+  padding: 40px; /* Padding inside the board */
+  background: #f0f2ff; /* Light purple-ish from screenshot */
+}
+
+
+
+/* RECENT ACTIVITY BOARD*/
+.recent-activity {
+  width: 100%; /* FULL WIDTH */
+  min-height: 200px; /* adjust as needed */
+  padding: 16px; /* PADDING */
+  border-radius: 12px; /* ROUNDED CORNERS */
+  /* Vertical gradient: top #E6E8FD up to 45%, bottom #EFA872 */
+  background: linear-gradient(to bottom, #E6E8FD 0%, #E6E8FD 45%, #EFA872 100%);
+    /* Optional: smooth font and content visibility */
+  color: #333;
+  box-sizing: border-box;       /* Include padding in size */
+  overflow: hidden; /* ensures rounded corners clip the gradient */
+  position: relative;   /* already required for ::before absolute positioning */
+  z-index: 1;
+}
+
+
+
+/* Gradient overlay */
+.recent-activity::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  border-radius: inherit; /* inherit the parent's border-radius */
+  background: linear-gradient(to bottom, #E6E8FD 0%, #E6E8FD 45%, #EFA872 100%);
+  z-index: 0; /* behind content */
+  pointer-events: none; /* so it doesn’t block clicks */
+}
+
+
+
+
+
+
+.recent-activity h3 {
+  font-size: 36px; /* Larger font size */
+  font-weight: bold;
+  color: #333; /* Match existing text color */
+  margin-bottom: 10px; /* Add spacing below */
+}
+
+
+
+
+
+/* Make sure content sits above the gradient */
+.recent-activity > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+.activity-divider {
+  border: none; /* REMOVE DEFAULT BORDER */
+  border-top: 3px solid #444; /* THICK TOP BORDER */
+  margin: 12px 0 20px; /* VERTICAL MARGINS */
+  border-radius: 50px; /* ROUNDED TOP */
+}
+
+
+
+.activity-list {
+  list-style: none; /* REMOVE LIST STYLING */
+  display: flex; /* USE FLEXBOX */
+  flex-direction: column; /* STACK VERTICALLY */
+  gap: 18px; /* SPACE BETWEEN ITEMS */
+
+}
+
+
+
+.activity-list li {
+  display: flex; /* USE FLEXBOX */
+  flex-direction: column; /* STACK VERTICALLY */
+  align-items: flex-start; /* ALIGN TO START */
+  padding-bottom: 10px; /* BOTTOM PADDING */
+  border-bottom: 2px solid #444; /* BOTTOM BORDER */
+}
+
+
+
+.activity-text {
+  color: #333; /* TEXT COLOR */
+  font-size: 1rem; /* FONT SIZE */
+  word-wrap: break-word; /* ALLOW WRAPPING */
+}
+
+
+.activity-time {
+  font-size: 0.95rem; /* FONT SIZE */
+  color: #555; /* TEXT COLOR */
+  font-weight: bold; /* BOLD TEXT */
+  margin-top: 4px; /* SPACE ABOVE */
+}
+
+
+
+
+
+
+/* ====================== FOOTER ====================== */
+
+/* FIXED FOOTER LAYOUT */
+footer {
+  display: flex; /* USE FLEXBOX */
+  justify-content: center; /* CENTER CONTENT */
+  width: 100%; /* FULL WIDTH */
+  background: #E0E3FD; /* LIGHT BLUE BACKGROUND */
+  padding: 20px 40px; /* PADDING */
+  box-sizing: border-box; /* INCLUDE PADDING IN SIZE */
+}
+
+.footer-nav {
+  display: flex; /* USE FLEXBOX */
+  justify-content: space-between; /* SPACE BETWEEN SECTIONS */
+  align-items: center; /* CENTER ITEMS */
+  width: 100%; /* FULL WIDTH */
+  max-width: 1200px; /* MAX WIDTH */
+  flex-wrap: wrap; /* ALLOW WRAPPING */
+  gap: 10px; /* SPACE BETWEEN ITEMS */
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  display: flex; /* USE FLEXBOX */
+  align-items: center; /* CENTER ITEMS */
+  gap: 40px; /* SPACE BETWEEN ITEMS */
+  flex: 1; /* ALLOW EQUAL GROWTH */
+  min-width: 150px; /* MIN WIDTH */
+}
+
+.footer-center {
+  justify-content: center; /* CENTER CONTENT */
+}
+
+.footer-right {
+  justify-content: flex-end; /* ALIGN TO RIGHT */
+}
+
+.footer-left ul {
+  list-style: none; /* REMOVE LIST STYLING */
+  padding: 0; /* REMOVE PADDING */
+  margin: 0; /* REMOVE MARGIN */
+}
+
+.footer-left li {
+  display: inline-block; /* DISPLAY INLINE */
+  margin-right: 15px; /* SPACE BETWEEN ITEMS */
+}
+
+.footer-left li a {
+  text-decoration: none; /* REMOVE UNDERLINE */
+  color: black; /* TEXT COLOR */
+  font-size: 1.1rem; /* FONT SIZE */
+}
+
+.footer-nav ul {
+  display: flex; /* USE FLEXBOX */
+  gap: 15px; /* SPACE BETWEEN ITEMS */
+  list-style: none; /* REMOVE LIST STYLING */
+  padding: 0; /* REMOVE PADDING */
+  margin: 0; /* REMOVE MARGIN */
+}
+
+.footer-nav p {
+  margin: 0; /* REMOVE MARGIN */
+  text-align: center; /* CENTER TEXT */
+  font-size: 1rem; /* FONT SIZE */
+}
+
+/* OPTIONAL CLASS FOR FOOTER TEXT */
+.footer-text {
+  font-size: clamp(0.8rem, 1.5vw, 1rem); /* RESPONSIVE FONT SIZE */
+}
+
+/* CENTER FOOTER SECTIONS */
+footer {
+  justify-content: space-between; /* SPACE BETWEEN SECTIONS */
+  align-items: center; /* CENTER ITEMS */
+}
+
+.footer-left {
+  justify-content: flex-start; /* ALIGN TO LEFT */
+}
+
+.footer-center {
+  justify-content: center; /* CENTER CONTENT */
+  text-align: center; /* CENTER TEXT */
+}
+
+.footer-right {
+  justify-content: center; /* CENTER ICONS */
+}
+
+.footer-right img {
+  display: inline-block; /* DISPLAY INLINE */
+  vertical-align: middle; /* CENTER VERTICALLY */
+}
+
+.footer-center img {
+  width: 28px; /* FIXED WIDTH */
+  height: 28px; /* FIXED HEIGHT */
+}
+
+.footer-right {
+  justify-content: flex-end; /* ALIGN TO RIGHT */
+  margin-right: 0; /* REMOVE EXTRA SPACE */
+}
+
+/* ====================== RESPONSIVE FOOTER ====================== */
+
+/* TABLET AND BELOW (≤768PX) */
+@media (max-width: 768px) {
+  footer {
+    padding: 14px 20px; /* REDUCED PADDING */
+    flex-direction: column; /* STACK VERTICALLY */
+    align-items: center; /* CENTER ITEMS */
+    gap: 14px; /* SPACE BETWEEN ITEMS */
+    text-align: center; /* CENTER TEXT */
+  }
+
+  .footer-nav {
+    flex-direction: column; /* STACK ITEMS */
+    align-items: center; /* CENTER ITEMS */
+    gap: 16px; /* SPACE BETWEEN ITEMS */
+  }
+
+  .footer-left ul {
+    flex-wrap: wrap; /* ALLOW WRAPPING */
+    justify-content: center; /* CENTER ITEMS */
+    gap: 10px; /* SPACE BETWEEN ITEMS */
+  }
+
+  .footer-left li,
+  .footer-left li a {
+    font-size: 1rem; /* ADJUST FONT SIZE */
+    margin: 4px 6px; /* MARGINS */
+  }
+
+  .footer-nav p {
+    font-size: 0.85rem; /* REDUCE FONT SIZE */
+  }
+
+  .footer-center img {
+    width: 24px; /* REDUCE WIDTH */
+    height: 24px; /* REDUCE HEIGHT */
+  }
+}
+
+
+
+
+/* Mobile dropdown menu hidden by default */
+.mobile-dropdown {
+  display: none;
+  flex-direction: column;
+  background-color: #fff; /* adjust to your header color */
+  position: absolute;
+  top: 60px; /* below header top row */
+  right: 16px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  z-index: 1000;
+  padding: 10px;
+}
+
+/* Show dropdown when active */
+.mobile-dropdown.active {
+  display: flex;
+  gap: 10px;
+}
+
+/* Style links and profile inside dropdown */
+.mobile-dropdown a {
+  text-decoration: none;
+  color: #333;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.mobile-dropdown a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Profile inside dropdown */
+.mobile-dropdown .profile-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-dropdown .profile-icon img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+
+
+
+/* MOBILE-SPECIFIC (≤480PX) */
+@media (max-width: 480px) {
+  .footer-nav {
+    flex-direction: column; /* STACK ITEMS */
+    gap: 12px; /* SPACE BETWEEN ITEMS */
+    width: 20px; /* FIX WIDTH (CHECK INTENT) */
+    height: 20px; /* FIX HEIGHT (CHECK INTENT) */
+  }
+
+  .footer-left li,
+  .footer-left li a,
+  .footer-center p,
+  .footer-nav p {
+    font-size: 0.75rem; /* REDUCE FONT SIZE */
+  }
+
+  .footer-left li {
+    margin-right: 8px; /* REDUCE MARGIN */
+  }
+
+  .footer-center img {
+    width: 16px; /* REDUCE WIDTH */
+    height: 16px; /* REDUCE HEIGHT */
+  }
+}
+
+/* EXTRA SMALL SCREENS (≤350PX) */
+@media (max-width: 350px) {
+  .footer-left li,
+  .footer-left li a,
+  .footer-nav p {
+    font-size: 0.7rem; /* FURTHER REDUCE FONT SIZE */
+  }
+
+  .footer-center img {
+    width: 14px; /* REDUCE WIDTH */
+    height: 14px; /* REDUCE HEIGHT */
+  }
+}
+
+/* ====================== HAMBURGER MENU ====================== */
+
+/* HAMBURGER MENU STYLING */
+.hamburger-menu {
+  display: none; /* HIDE BY DEFAULT */
+  position: fixed; /* FIXED POSITION */
+  top: 50%; /* VERTICALLY CENTER */
+  left: 15px; /* HORIZONTAL POSITION */
+  transform: translateY(-50%); /* ADJUST FOR CENTERING */
+  font-size: 28px; /* FONT SIZE */
+  background: #333; /* DARK BACKGROUND */
+  color: white; /* TEXT COLOR */
+  padding: 10px 14px; /* PADDING */
+  border-radius: 8px; /* ROUNDED CORNERS */
+  cursor: pointer; /* INDICATE CLICKABLE */
+  z-index: 1001; /* ABOVE CONTENT */
+}
+
+/* CLOSE BUTTON STYLING */
+.close-btn {
+  display: none; /* HIDE BY DEFAULT */
+  position: absolute; /* POSITION ABSOLUTELY */
+  top: 10px; /* TOP POSITION */
+  right: 10px; /* RIGHT POSITION */
+  font-size: 24px; /* FONT SIZE */
+  color: black; /* TEXT COLOR */
+  padding: 5px; /* PADDING */
+  cursor: pointer; /* INDICATE CLICKABLE */
+  z-index: 1002; /* ABOVE SIDEBAR */
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+/* ====================== RESPONSIVE DESIGN ====================== */
+/////////////////////////////////////////////////////////////////////
+
+
+@media (max-width: 600px) {
+  header nav {
+    flex-direction: column; /* stack nav links vertically */
+    gap: 8px;
+  }
+  
+  header .search {
+    width: 100%; /* search input stretches full width */
+    margin-top: 8px;
+  }
+
+
+
+  #hamburger-menu {
+    display: block;
+  }
+
+
+  .search-bar {
+    width: 100%;          /* full width under logo */
+    flex: 1 1 300px;             /* can shrink but min 300px before wrapping */
+    margin-top: 10px;            /* gives breathing room when wrapped */
+  }
+
+
+}
+
+
+
+
+/* MEDIUM SCREENS */
+@media (max-width: 950px) {
+  .board.wide {
+    flex: 1 1 100%; /* FULL WIDTH */
+    max-width: 100%; /* MAX WIDTH */
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-row { flex-direction: column; /* STACK ROWS */ }
+  .board, .board.wide { flex: 1 1 100%; /* FULL WIDTH */ max-width: 100%; /* MAX WIDTH */ }
+  .task-overview { flex-direction: column; /* STACK COLUMNS */ }
+  .task-column { flex: 1 1 100%; /* FULL WIDTH */ min-width: 0; /* NO MIN WIDTH */ }
+  .folder-content { gap: 10px; /* REDUCE SPACE */ }
+}
+
+
+
+/* ------------------ SMALL SCREEN BOARD CONTENT ------------------ */
+@media (max-width: 900px) {
+  .board-title {
+    font-size: 14px !important; /* smaller title */
+  }
+  .board-number {
+    font-size: 16px !important; /* smaller number */
+  }
+  .board-subtext {
+    font-size: 12px !important; /* smaller subtext */
+  }
+  .board-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  #hamburger-menu { display: block; /* SHOW HAMBURGER */ }
+  .sidebar { position: absolute; /* POSITION ABSOLUTELY */ top: 90px; /* OFFSET FROM TOP */ left: -220px; /* HIDE OFF SCREEN */ width: 200px; /* FIXED WIDTH */ height: calc(100vh - 90px); /* FULL HEIGHT MINUS HEADER */ z-index: 1000; /* ABOVE CONTENT */ transition: left 0.3s ease; /* SMOOTH SLIDE */ }
+  .sidebar.open { left: 0; /* SHOW SIDEBAR */ }
+  .sidebar .menu-item { background: transparent; /* TRANSPARENT BACKGROUND */ color: black; /* TEXT COLOR */ border-left: 4px solid transparent; /* DEFAULT BORDER */ }
+  .sidebar input:checked + .menu-item { background: #eaf2ff; /* LIGHT BLUE */ border-left: 4px solid #007bff; /* BLUE BORDER */ font-weight: bold; /* BOLD TEXT */ }
+  .sidebar input:not(:checked) + .menu-item { background: transparent; /* TRANSPARENT */ color: black; /* TEXT COLOR */ }
+  .sidebar .menu-item:hover { background: #E0E3FD; /* LIGHT BLUE ON HOVER */ }
+  .sidebar .menu-item .icon { filter: none; /* RESET ICON FILTER */ }
+  .container { flex-direction: column; /* STACK ITEMS */ margin-top: 70px; /* OFFSET TO MATCH HEADER */ padding: 0 20px; /* MATCH BODY PADDING */ }
+  .main-content { min-height: auto; /* NO MIN HEIGHT */ height: auto; /* ADJUST TO CONTENT */ margin-left: 0; /* NO LEFT MARGIN */ z-index: 999; /* ABOVE BACKGROUND */ }
+  .dashboard-row.top-row { min-height: 120px; /* REDUCED MIN HEIGHT */ }
+  .dashboard-row.bottom-row { flex: 0 0 auto; /* FIXED SIZE */ min-height: auto; /* NO MIN HEIGHT */ }
+  .sidebar.open .close-btn { display: block; /* SHOW CLOSE BUTTON */ }
+}
+
+
+
+@media (max-width: 700px) {
+  .main-content { overflow-y: auto; /* ALLOW SCROLLING */ }
+}
+
+
+.dashboard-grid,
+.dashboard-row,
+.main-content {
+  min-height: 200px !important;
+  overflow: visible !important;
+}
+
+.board {
+  display: block !important;
+  position: relative !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: white !important;
+  min-height: 120px !important;
+  border: 2px solid #A39DE0; /* ✅ width + style + color */
+  color: black !important;
+  z-index: 9999 !important;
+  padding: 30px;
+}
+
+
+
+
+
+
+/////////////////////////////////////////////
+////////////* TOP ROW BOARDS *///////////////
+/////////////////////////////////////////////
+
+
+/* TOP ROW BOARDS */
+.top-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between boards */
+  min-height: 0; /* Prevent inherited min-height issues */
+}
+
+
+
+
+.top-row .board {
+  flex: 1 1 calc(25% - 15px); /* 4 boards per row minus gap */
+  background-color: #f0f0f0;
+  padding: 30px; /* Reduced padding to minimize internal gap */
+  border-radius: 10px;
+  border: 2px solid #A39DE0; /* Consistent border */
+  min-width: 200px; /* Prevents shrinking too much */
+  min-height: 0 !important; /* Override inherited min-height */
+  height: auto !important; /* Adjust to content */
+  display: block; /* Ensure proper stacking */
+  box-sizing: border-box; /* Include padding in size */
+}
+
+/* Fix board-header and optimize spacing */
+.top-row .board .board-header {
+  display: flex;
+  justify-content: space-between; /* Corrected invalid 'padding-right' */
+  align-items: center; /* Corrected invalid 'padding-right' */
+  margin-bottom: 8px; /* Reduced to minimize gap */
+  min-height: 0; /* Remove forced min-height */
+}
+
+.top-row .board .board-number {
+  font-size: 1.2em; /* Slightly smaller for compact fit */
+  font-weight: bold;
+  margin-bottom: 4px; /* Reduced to minimize gap */
+  min-height: 0; /* Remove forced min-height */
+  word-wrap: break-word;
+}
+
+.top-row .board .board-subtext {
+  font-size: 1em; /* Slightly smaller for compact fit */
+  min-height: 0; /* Remove forced min-height */
+  word-wrap: break-word;
+}
+
+/* Remove extra margins from direct children */
+.top-row .board > * {
+  margin: 0; /* Reset margins to prevent gaps */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .top-row .board {
+    flex: 1 1 calc(33.33% - 13.33px); /* 3 per row */
+  }
+}
+
+@media (max-width: 900px) {
+  .top-row .board .bottom-row{
+    flex: 1 1 calc(50% - 10px); /* 2 per row */
+  }
+}
+
+@media (max-width: 600px) {
+  .top-row .board {
+    flex: 1 1 100%; /* 1 per row */
+  }
+}
+
+
+
+----------------------------------------------------
+
+
+/* HEADER RESPONSIVE STACKING */
+@media (max-width: 768px) {
+  .site-header {
+    justify-content: flex-start; /* align everything to the left */
+    padding-left: 0; /* remove header padding */
+    padding-right: 20px; /* optional breathing room on right */
+  }
+
+
+  .left-nav {
+    gap: 10px; /* reduce gap between logo and nav items */
+    width: 100%; /* let it span full width */
+  }
+
+
+
+  .header-right {
+  display: flex;
+  flex-wrap: wrap;           /* allow search bar to drop first */
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-end;          /* space from top row */
+  }
+
+  .search-input {
+    width: 100%;                   /* search fills available width */
+    max-width: 300px;              /* optional cap */
+  }
+
+  .profile-icon {
+    margin-left: 15px;             /* space after search bar */
+    flex-shrink: 0;              /* profile icon never shrinks */
+    margin-left: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+/* ====================== MOBILE HEADER FIX ====================== */
+@media (max-width: 768px) {
+
+  /* LEFT NAV: logo left, hamburger right */
+  .left-nav {
+    display: flex;
+    justify-content: space-between; /* force logo left, hamburger right */
+    align-items: center;
+    width: 100%;
+    gap: 0; /* remove extra spacing */
+  }
+
+  /* LOGO */
+  .logo {
+    margin-left: 0; /* flush left */
+  }
+
+  /* HAMBURGER */
+  #hamburger-menu {
+    display: block; /* show hamburger */
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+ 
+  /* HEADER RIGHT: search + profile */
+  .header-right {
+    display: flex;
+    flex-wrap: wrap;          /* allow search & profile to wrap */
+    justify-content: flex-end; /* keep aligned right */
+    align-items: center;
+    gap: 10px;                /* smaller gap on mobile */
+    width: 100%;
+    margin-top: 10px;         /* optional spacing below left-nav */
+  }
+
+  /* SEARCH BAR */
+  .search-input {
+    width: 281px;             /* shrink to fit mobile */
+    min-width: 100px;         /* prevent it from disappearing */
+  }
+}
+
+
+
+/* ===============================
+   MOBILE HEADER (screens ≤768px)
+   =============================== */
+@media (max-width: 768px) {
+
+  /* --- Header layout --- */
+  .site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 20px 24px;
+    position: relative;
+    height: auto;
+    transition: padding 0.4s ease, height 0.4s ease;
+  }
+
+  /* --- Top row: logo left, hamburger right --- */
+  .left-nav {
+    display: flex;
+    justify-content: flex-start; /* logo left */
+    align-items: center;
+    width: 100%;
+    position: relative; /* for absolute hamburger */
+  }
+
+  .logo {
+    margin: 0;
+  }
+
+  #hamburger-menu {
+    display: flex !important;
+    margin-top: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  /* --- Hide desktop nav links & profile icon --- */
+  .nav-bar,
+  .header-right .profile-icon {
+    display: none !important;
+  }
+
+
+
+
+
+
+/* Make HOME and DASHBOARD flexible like the search bar */
+.nav-bar {
+  flex: 1; /* allow nav to shrink and grow */
+  display: flex;
+  justify-content: flex-start;
+  min-width: 0; /* critical: allows shrinking */
+}
+
+
+.nav-links li,
+.nav-links a {
+  white-space: nowrap; /* prevents wrapping */
+  flex-shrink: 1; /* allows them to get closer together */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* --- Search bar below top row --- */
+  .search-bar {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* --- Mobile dropdown menu --- */
+  .mobile-dropdown {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* below header top row */
+    right: 0;
+    width: 110px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.25s ease;
+  }
+
+  .mobile-dropdown.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- Dropdown links stacked vertically --- */
+  .mobile-dropdown .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-dropdown .mobile-nav a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 6px 8px;
+    border-radius: 4px;
+  }
+
+  .mobile-dropdown .mobile-nav a:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* --- Profile inside dropdown --- */
+  .mobile-dropdown .profile-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .mobile-dropdown .profile-icon img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+
+  /* --- Remove any old floating hamburger --- */
+  .floating-hamburger {
+    display: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* DEBUG BORDERS - TEMPORARY */
+.site-header { border: 2px solid red; }
+.left-nav { border: 2px dashed blue; }
+.logo { border: 2px dotted green; }
+.header-right { border: 2px dashed orange; }
+.nav-bar { border: 2px dotted purple; }
+#hamburger-menu { border: 2px dashed pink; }
+
+
+
+/* =========================
+   TOP ROW - Responsive fixesFOR SMALL SCREENS
+   ========================= */
+
+.dashboard-row.top-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;        /* allow cards to wrap to new rows */
+  align-items: stretch;   /* make cards same height in a row */
+}
+
+/* Base card sizing for large screens (4 across) */
+.top-row .board {
+  box-sizing: border-box;
+  flex: 1 1 calc(25% - 12px); /* 4 cards (25%) minus half the gap */
+  min-width: 180px;           /* prevents cards from getting too small */
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;     /* lets header/number/footers stack nicely */
+  justify-content: space-between;
+  overflow: visible;          /* prevent unexpected cropping */
+}
+
+/* Make the board header not force wider cards */
+.top-row .board .board-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* Keep icons from stretching the card width */
+.top-row .board .board-icon {
+  width: 28px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* SMALLER VIEWPORT BREAKPOINTS */
+/* Desktop -> Tablet: 3 across (optional) */
+@media (max-width: 1024px) {
+  .top-row .board { flex: 1 1 calc(33.333% - 12px); min-width: 170px; }
+}
+
+/* Tablet -> Large Phone: 2 across */
+@media (max-width: 768px) {
+  .top-row .board { flex: 1 1 calc(50% - 12px); min-width: 160px; }
+}
+
+/* Small phones: stacked single column */
+@media (max-width: 480px) {
+  .top-row .board { flex: 1 1 100%; min-width: 0; }
+}
+
+
+
+
+/* ============================
+   BOTTOM ROW — Targeted fixes
+   (paste at the END of style2.css)
+   ============================ */
+
+/* Ensure the bottom-row uses flex and wraps when needed */
+.dashboard-grid .dashboard-row.bottom-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: stretch; /* make cards match height in a row */
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+/* Base rule for any board in bottom-row */
+.dashboard-grid .dashboard-row.bottom-row .board {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: visible; /* prevent child clipping */
+  min-height: auto;
+  min-width: 0; /* important so flex items can shrink */
+}
+
+/* Specifically target the two "wide" boards in your HTML:
+   place them side-by-side on wide screens, stack on small screens */
+.dashboard-grid .dashboard-row.bottom-row .board.wide {
+  flex: 1 1 calc(48% - 12px); /* two cards side-by-side with gap */
+  min-width: 300px;           /* stops a single card from collapsing */
+  max-width: 100%;
+}
+
+/* If you want one of the wide cards slightly narrower, use a modifier:
+   e.g. .recent-activity is often visually narrower than the task overview */
+.dashboard-grid .dashboard-row.bottom-row .board.wide.recent-activity {
+  flex: 1 1 calc(40% - 12px); /* optional — comment out if you want 50/50 */
+  min-width: 280px;
+}
+
+/* Charts and images inside bottom-row should not force parent width */
+.dashboard-grid .dashboard-row.bottom-row .board img,
+.dashboard-grid .dashboard-row.bottom-row .board canvas {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+}
+
+/* TASK OVERVIEW columns: allow horizontal scroll instead of cropping */
+.dashboard-grid .dashboard-row.bottom-row .task-overview {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}
+.dashboard-grid .dashboard-row.bottom-row .task-column {
+  min-width: 220px;
+  flex: 0 0 220px;
+}
+
+/* Responsiveness: one-column stack on small screens */
+@media (max-width: 1024px) {
+  .dashboard-grid .dashboard-row.bottom-row .board.wide {
+    flex: 1 1 calc(50% - 12px);
+    min-width: 260px;
+  }
+  .dashboard-grid .dashboard-row.bottom-row .board.wide.recent-activity {
+    flex: 1 1 calc(50% - 12px);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid .dashboard-row.bottom-row .board.wide,
+  .dashboard-grid .dashboard-row.bottom-row .board.wide.recent-activity {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+}
+
+
+
+
+/* =========================
+   FIX — Bottom Row Boards: alignment + overflow
+   ========================= */
+
+.dashboard-grid .dashboard-row.bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch; /* Ensures both boards match height */
+  gap: 20px; /* or whatever spacing you used previously */
+}
+
+/* Board sizing for wide screens */
+.dashboard-grid .dashboard-row.bottom-row .board.wide {
+  flex: 1 1 calc(50% - 10px);
+  min-width: 0; /* critical for flex shrink */
+  max-width: 100%;
+  overflow: hidden; /* prevent content spill */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; /* allow inner content to flow vertically */
+}
+
+/* Recent Activity inner elements fit neatly */
+.dashboard-grid .dashboard-row.bottom-row .board.wide.recent-activity * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive: stack boards vertically on small screens */
+@media (max-width: 768px) {
+  .dashboard-grid .dashboard-row.bottom-row {
+    flex-direction: column;
+  }
+
+  .dashboard-grid .dashboard-row.bottom-row .board.wide {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+
+
+
+/* ====================== BOARD BASE ====================== */
+.board {
+  background-color: #fff; /* keep your current bg */
+  border-radius: 12px; 
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 300px; /* base width for large screens */
+  transition: all 0.3s ease; /* smooth scaling */
+}
+
+/* ====================== BOARD TITLE ====================== */
+.board-title {
+  font-size: 1.4rem; /* default for desktop */
+  margin: 0 0 10px 0;
+  font-weight: normal;
+  word-wrap: break-word;
+  transition: font-size 0.3s ease;
+}
+
+/* ====================== BOARD CONTENT / NUMBERS ====================== */
+.board-number {
+  font-size: 2rem; 
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  transition: font-size 0.3s ease;
+}
+
+.board-icon {
+  width: 40px;
+  height: 40px;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* ====================== RESPONSIVE BREAKPOINTS ====================== */
+
+/* Large screens / 1200px and below */
+@media (max-width: 1200px) {
+  .board {
+    width: 260px;
+    padding: 18px;
+  }
+
+  .board-title {
+    font-size: 1.5rem;
+  }
+
+  .board-number {
+    font-size: 1.9rem;
+  }
+
+  .board-icon {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* Medium screens / tablets / 900px and below */
+@media (max-width: 900px) {
+  .board {
+    width: 220px;
+    padding: 16px;
+  }
+
+  .board-title {
+    font-size: 1.6rem;
+  }
+
+  .board-number {
+    font-size: 1.8rem;
+  }
+
+  .board-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Small screens / mobiles / 600px and below */
+@media (max-width: 600px) {
+  .board {
+    width: 100%; /* full width for small screens */
+    padding: 14px;
+  }
+
+  .board-title {
+    font-size: 1.8rem;
+  }
+
+  .board-number {
+    font-size: 1.7rem;
+  }
+
+  .board-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
