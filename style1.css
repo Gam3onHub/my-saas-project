@@ -1003,7 +1003,7 @@ footer {
 
 .SaaS .review-section {
   position: relative;
-  background: url('../assets/fadedofficebg.jpg') no-repeat center center/cover;
+  background: url('assets/fadedofficebg.jpg') no-repeat center center/cover;
   padding: 2rem 1rem;
   color: #333;
 }
@@ -1437,6 +1437,7 @@ footer {
     transform: translateX(0);
   }
 }
+
 
 
 
