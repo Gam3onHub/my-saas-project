@@ -491,7 +491,7 @@ body {
 .SaaS {
   margin-top: 2rem;
   padding-bottom: 0.2rem;
-  background: url('../assets/officebg.jpg') no-repeat center center/cover;
+  background: url('assets/officebg.jpg') no-repeat center center/cover;
   position: relative;
   color: #fff;
   max-height: 300px;
@@ -1437,6 +1437,7 @@ footer {
     transform: translateX(0);
   }
 }
+
 
 
 
